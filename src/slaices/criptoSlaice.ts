@@ -43,6 +43,46 @@ export const initialState: Array<cryptoData> = [
       },
     },
   },
+  {
+    id: '21c795f5-1bfd-40c3-858e-e9d7e820c6d0',
+    serial_id: 6059,
+    symbol: 'ETH',
+    name: 'Ethereum',
+    slug: 'ethereum',
+    contract_addresses: null,
+    _internal_temp_agora_id: '263d8b01-5a96-41f0-85d5-09687bbbf7ca',
+    metrics: {
+      market_data: {
+        price_usd: 1868.8218615909627,
+        price_btc: 0.0676653802456436,
+        price_eth: 1,
+        volume_last_24_hours: 2983235477.8810983,
+        real_volume_last_24_hours: 1395160029.4927921,
+        volume_last_24_hours_overstatement_multiple: 2.138274760470057,
+        percent_change_usd_last_1_hour: 0.22365529306029677,
+        percent_change_btc_last_1_hour: 0.15821459009863145,
+        percent_change_eth_last_1_hour: 0,
+        percent_change_usd_last_24_hours: 0.7136464499474902,
+        percent_change_btc_last_24_hours: -0.06335384727435996,
+        percent_change_eth_last_24_hours: 0.5143777379522708,
+        ohlcv_last_1_hour: {
+          open: 1865.1176819219163,
+          high: 1865.127507304664,
+          low: 1864.5862520444896,
+          close: 1864.6514698814462,
+          volume: 267966.7985996726,
+        },
+        ohlcv_last_24_hour: {
+          open: 1865.116984957013,
+          high: 1865.3587416700027,
+          low: 1854.7780553615783,
+          close: 1855.57958376547,
+          volume: 60837707.48216616,
+        },
+        last_trade_at: '2023-04-23T06:28:23Z',
+      },
+    },
+  },
 ];
 
 export const cryptoSlaice = createSlice({
