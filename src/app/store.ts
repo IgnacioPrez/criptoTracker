@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {cryptoData} from '../model/crypto.model';
-import {cryptoSlaice} from '../slaices/criptoSlaice';
+import {cryptoSlice} from '../slices/criptoSlice';
 
 export interface AppStore {
   crypto: Array<cryptoData>;
@@ -8,6 +8,6 @@ export interface AppStore {
 
 export const store = configureStore<AppStore>({
   reducer: {
-    crypto: cryptoSlaice.reducer,
+    crypto: cryptoSlice.reducer,
   },
 });

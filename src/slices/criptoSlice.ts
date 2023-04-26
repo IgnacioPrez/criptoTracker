@@ -85,7 +85,7 @@ export const initialState: Array<cryptoData> = [
   },
 ];
 
-export const cryptoSlaice = createSlice({
+export const cryptoSlice = createSlice({
   name: 'crypto',
   initialState,
   reducers: {
@@ -96,6 +96,6 @@ export const cryptoSlaice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {} = cryptoSlaice.actions;
+export const {} = cryptoSlice.actions;
 
-export default cryptoSlaice.reducer;
+export default cryptoSlice.reducer;

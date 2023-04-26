@@ -1,2 +1,2 @@
-export {default as Card} from './Card';
-export {default as CryptoContainer} from './CryptoContainer';
+export {default as Card} from './card/Card';
+export {default as CryptoContainer} from './crypto-container/CryptoContainer';
