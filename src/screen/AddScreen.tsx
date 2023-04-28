@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-const AddScreen = () => {
+import {HeaderBack, Search} from '../components';
+import {ContainerAddScreen} from '../components/screen-style-component/style';
+const AddScreen = ({navigation}: any) => {
   return (
-    <View>
-      <Text style={{color: 'black'}}>Hola mundo</Text>
-    </View>
+    <ContainerAddScreen>
+      <HeaderBack navigation={navigation} />
+      <Search />
+    </ContainerAddScreen>
   );
 };
 

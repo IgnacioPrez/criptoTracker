@@ -6,7 +6,7 @@ import Card from '../card/Card';
 import {AddCryptoLink, ContainerList, LinkAddStyle} from './styles';
 import {Pressable} from 'react-native';
 
-const CryptoContainer = ({navigation}) => {
+const CryptoContainer = ({navigation}: any) => {
   const state = useSelector((state: AppStore) => state.crypto);
   return (
     <ContainerList>
