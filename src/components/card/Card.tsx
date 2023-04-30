@@ -16,16 +16,14 @@ import {
   TextVarian,
 } from './styles';
 
-const Card = ({id, name, symbol, metrics}: cryptoData) => {
+const Card = ({id, name, symbol, market_data}: cryptoData) => {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 0,
   });
 
-  const roundNumber =
-    metrics.market_data.percent_change_btc_last_24_hours.toFixed(2);
-
+  const roundNumber = market_data.percent_change_btc_last_24_hours.toFixed(2);
   const roundNegative = Number(roundNumber) < 0;
 
   return (
@@ -43,9 +41,7 @@ const Card = ({id, name, symbol, metrics}: cryptoData) => {
       </Logo>
       <DataCrypto>
         <FirstData>
-          <FirstText>
-            {formatter.format(metrics.market_data.price_usd)}
-          </FirstText>
+          <FirstText>{formatter.format(market_data.price_usd)}</FirstText>
         </FirstData>
         <SecondData>
           <TextVarian roundNegative={roundNegative}>

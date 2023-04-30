@@ -28,7 +28,7 @@ export const ReferenceText = styled.Text`
   margin-bottom: 24px;
 `;
 
-export const SearchBtn = styled.TouchableOpacity`
+export const SearchBtn = styled.TouchableHighlight`
   background-color: ${({theme}) => theme.yellow};
   margin: 16px 0px;
   padding: 10px;

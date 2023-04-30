@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   BtnSearchText,
   Input,
@@ -7,15 +7,12 @@ import {
   SearchContainer,
 } from './style';
 import {themes} from '../../utilities/styles.theme';
-import {addCrypto} from '../../slices/criptoSlice';
+import {useSearch} from '../../hooks/useSearch';
 
 const Search = () => {
-  const [focus, setFocus] = useState(false);
-  const [search, setSearch] = useState('');
+  const {handleButtonPress, handleTextChange, focus, setFocus, search} =
+    useSearch();
 
-  const handleTextChange = (text: string) => {
-    setSearch(text);
-  };
   return (
     <SearchContainer>
       <ReferenceText>Add a Cryptocurrency</ReferenceText>
@@ -27,7 +24,7 @@ const Search = () => {
         value={search}
         onChangeText={handleTextChange}
       />
-      <SearchBtn onPress={() => addCrypto(search)}>
+      <SearchBtn onPress={handleButtonPress}>
         <BtnSearchText focus={focus}>Add</BtnSearchText>
       </SearchBtn>
     </SearchContainer>

@@ -1,9 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {cryptoData} from '../model/crypto.model';
-import {cryptoSlice} from '../slices/criptoSlice';
+import {cryptoSlice, cryptoState} from '../slices/criptoSlice';
 
 export interface AppStore {
-  crypto: Array<cryptoData>;
+  crypto: cryptoState;
 }
 
 export const store = configureStore<AppStore>({
