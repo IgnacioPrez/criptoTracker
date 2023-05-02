@@ -15,19 +15,19 @@ import {
   TextLogo,
   TextVarian,
 } from './styles';
+import {formatter} from '../../utilities/functions.utils';
+interface Props {
+  item: cryptoData;
+  redirect: () => any;
+}
 
-const Card = ({id, name, symbol, market_data}: cryptoData) => {
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-  });
-
+const Card = ({item, redirect}: Props) => {
+  const {market_data, id, name, symbol} = item;
   const roundNumber = market_data.percent_change_btc_last_24_hours.toFixed(2);
   const roundNegative = Number(roundNumber) < 0;
 
   return (
-    <CryptoCard>
+    <CryptoCard onPress={redirect}>
       <Logo>
         <CryptoImage
           source={{
