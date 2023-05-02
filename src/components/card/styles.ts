@@ -25,10 +25,8 @@ export const TextLogo = styled.View`
 export const Logo = styled.View`
   width: 50%;
   flex-direction: row;
-  justify-content: flex-start;
   padding-left: 20px;
   gap: 7px;
-  align-self: center;
 `;
 export const DataCrypto = styled.View`
   width: 50%;

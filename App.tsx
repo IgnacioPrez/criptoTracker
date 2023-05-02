@@ -14,7 +14,7 @@ const App = () => (
         <HeaderContent>
           <HeaderInfo>
             <Title>CryptoTracker Pro</Title>
-            <UserIcon name="user" size={60} style={{color: 'white'}} />
+            <UserIcon name="user" size={60} />
           </HeaderInfo>
         </HeaderContent>
         <CryptoContainer />
