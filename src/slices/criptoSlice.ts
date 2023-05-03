@@ -2,6 +2,7 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {cryptoData} from '../model/crypto.model';
 import {searchUrl} from '../services/urls';
 import {Alert} from 'react-native';
+
 export interface cryptoState {
   crypto: cryptoData[];
   loading: boolean;
@@ -31,7 +32,7 @@ export const cryptoSlice = createSlice({
   name: 'crypto',
   initialState,
   reducers: {
-    deleteCrypto: (state, action): any => {
+    deleteCrypto: (state, action) => {
       state.crypto = state.crypto.filter(el => el.id !== action.payload);
     },
   },
@@ -41,14 +42,16 @@ export const cryptoSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchCrypto.fulfilled, (state, action) => {
-        state.loading = false;
+        state.loading = true;
         const cryptoFound = state.crypto.find(
           el => el.id === action.payload.id,
         );
         if (cryptoFound) {
           Alert.alert('Already on your list ❌');
+          state.loading = false;
           return;
         }
+        state.loading = false;
         state.crypto = [...state.crypto, action.payload];
         Alert.alert('Crypto successfully added ✅');
       })

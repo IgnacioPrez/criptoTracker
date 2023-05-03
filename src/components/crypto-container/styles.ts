@@ -16,7 +16,7 @@ export const AddCryptoLink = styled.View`
 `;
 
 export const LinkAddStyle = styled.Text<DefaultTheme>`
-  color: ${({theme}) => theme.text};
+  color: ${({theme}) => theme.blue};
 `;
 
 export const CloseModal = styled.View`

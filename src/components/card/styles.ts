@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 interface textProps {
   roundNegative: boolean;
 }
+
 export const CryptoImage = styled.Image`
   width: 45px;
   height: 45px;

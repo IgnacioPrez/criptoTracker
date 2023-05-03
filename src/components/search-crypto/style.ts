@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 
 export const SearchContainer = styled.View`
   height: 85%;
@@ -10,6 +10,10 @@ export const SearchContainer = styled.View`
 type AddTextInputProps = {
   focus: boolean;
 };
+interface LoadingProps {
+  isLoading: boolean;
+}
+
 export const Input = styled.TextInput<AddTextInputProps>`
   border: 2px solid;
   border-color: ${({theme, focus}) => (focus ? theme.yellow : theme.grey)};
@@ -28,7 +32,7 @@ export const ReferenceText = styled.Text`
   margin-bottom: 24px;
 `;
 
-export const SearchBtn = styled.TouchableHighlight`
+export const SearchBtn = styled.TouchableOpacity<LoadingProps>`
   background-color: ${({theme}) => theme.yellow};
   margin: 16px 0px;
   padding: 10px;
@@ -36,6 +40,11 @@ export const SearchBtn = styled.TouchableHighlight`
   align-items: center;
   border-radius: 4px;
   align-self: flex-end;
+  ${({isLoading}) =>
+    isLoading &&
+    css`
+      opacity: 0.5;
+    `}
 `;
 
 export const BtnSearchText = styled.Text<AddTextInputProps>`

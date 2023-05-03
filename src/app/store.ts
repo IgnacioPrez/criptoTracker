@@ -1,12 +1,33 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {cryptoSlice, cryptoState} from '../slices/criptoSlice';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+  persistReducer,
+  persistStore,
+} from 'redux-persist';
+import {RootState, rootReducer} from './rootReducer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export interface AppStore {
-  crypto: cryptoState;
-}
+const persistConfig = {
+  key: 'root',
+  version: 1,
+  storage: AsyncStorage,
+};
 
-export const store = configureStore<AppStore>({
-  reducer: {
-    crypto: cryptoSlice.reducer,
-  },
+const persistedReducer = persistReducer<RootState>(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
+
+export const persistor = persistStore(store);

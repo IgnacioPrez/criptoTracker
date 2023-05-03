@@ -16,6 +16,7 @@ import {
   TextVarian,
 } from './styles';
 import {formatter} from '../../utilities/functions.utils';
+
 interface Props {
   item: cryptoData;
   redirect: () => any;

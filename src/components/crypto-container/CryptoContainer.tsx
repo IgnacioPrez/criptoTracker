@@ -1,16 +1,17 @@
 import React from 'react';
 import {FlatList, Pressable} from 'react-native';
 import {useSelector} from 'react-redux';
-import {AppStore} from '../../app/store';
 import Card from '../card/Card';
 import {AddCryptoLink, ContainerList, LinkAddStyle} from './styles';
+import {RootState} from '../../app/rootReducer';
 
 const CryptoContainer = ({navigation}: any) => {
-  const state = useSelector((state: AppStore) => state.crypto);
+  const state = useSelector((state: RootState) => state.crypto.crypto);
+
   return (
     <ContainerList>
       <FlatList
-        data={state.crypto}
+        data={state}
         renderItem={({item}) => (
           <Card
             item={item}
