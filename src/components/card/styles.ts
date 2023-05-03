@@ -25,28 +25,25 @@ export const TextLogo = styled.View`
 `;
 export const Logo = styled.View`
   width: 50%;
+  display: flex;
+  align-items: center;
   flex-direction: row;
-  justify-content: flex-start;
-  padding-left: 20px;
+  padding-left: 3px;
   gap: 7px;
-  align-self: center;
 `;
 export const DataCrypto = styled.View`
   width: 50%;
   display: flex;
   flex-direction: column;
-  gap: 2px;
   justify-content: center;
   align-items: flex-end;
-  padding-right: 20px;
+  padding-right: 3px;
 `;
 export const FirstData = styled.View`
-  height: 25%;
   text-align: end;
 `;
 
 export const SecondData = styled.View`
-  height: 25%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -67,5 +64,5 @@ export const CryptoCard = styled.TouchableOpacity`
   border-color: lightgrey;
   border-bottom-width: 1px;
   border-style: solid;
-  align-items: center;
+  align-self: center;
 `;
