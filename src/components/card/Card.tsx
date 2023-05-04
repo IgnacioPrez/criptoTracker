@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageUrl} from '../../services';
+import {ImageUrl} from '../../services/urls';
 import {cryptoData} from '../../model/crypto.model';
 import ArrowUp from 'react-native-vector-icons/Feather';
 import ArrowDown from 'react-native-vector-icons/Feather';
