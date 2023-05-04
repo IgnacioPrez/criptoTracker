@@ -1,9 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-/* import type {PayloadAction} from '@reduxjs/toolkit'; */
 import {cryptoData} from '../model/crypto.model';
 import {baseUrl} from '../services/urls';
-
-/* export const initialState: Array<cryptoData> = []; */
 
 interface cryptoState {
   crypto: cryptoData[];

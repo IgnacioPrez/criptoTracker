@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 const AddScreen = () => {
   return (
     <View>
-      <Text style={{color: 'black'}}>Hola mundo</Text>
+      <Text>Hola mundo</Text>
     </View>
   );
 };
