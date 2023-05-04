@@ -56,7 +56,7 @@ export const TextVarian = styled.Text<textProps>`
 `;
 
 export const CryptoCard = styled.TouchableOpacity`
-  width: 100%;
+  width: 90%;
   height: 90px;
   display: flex;
   flex-direction: row;

@@ -31,3 +31,14 @@ interface Ohlcvlast1hour {
   close: number;
   volume: number;
 }
+
+export interface UpdateState {
+  id: string;
+  slug: string;
+  symbol: string;
+  metrics: Metrics;
+}
+
+interface Metrics {
+  market_data: Marketdata;
+}
