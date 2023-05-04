@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import UserIcon from 'react-native-vector-icons/EvilIcons';
 import {CryptoContainer} from '../components';
 import {ViewContent} from '../components/screen-style-component/style';
@@ -12,11 +12,19 @@ import {UpdateState} from '../model/crypto.model';
 import {baseUrl} from '../services/urls';
 import {RootState} from '../app/rootReducer';
 import {updateAllCrypto} from '../slices/criptoSlice';
+/* import {persistor} from '../app/store';
+
+function handleClearPersistedState() {
+  persistor.purge();
+}
+
+handleClearPersistedState(); */
 
 const HomeScreen = ({navigation}: any) => {
   const [provisional, setProvisional] = useState<UpdateState[]>([]);
-  /*   const allCryptoState = useSelector((state: RootState) => state.crypto.crypto);
-  const dispatch = useDispatch(); */
+  const allCryptoState = useSelector((state: RootState) => state.crypto.crypto);
+  const dispatch = useDispatch();
+
   function fetchData() {
     fetch(baseUrl)
       .then(response => response.json())
@@ -24,24 +32,29 @@ const HomeScreen = ({navigation}: any) => {
       .catch(error => console.error(error));
   }
 
-  useEffect(() => {
+  setInterval(() => {
     fetchData();
-  }, []);
-  /*   const updatedResults = provisional.map(result => {
-    const myStateItem = allCryptoState.find(item => item.id === result.id);
-    if (myStateItem) {
-      return {
-        ...result,
-        market_data: {
-          ...result.metrics.market_data,
-        },
-      };
+  }, /* 15 * 60 * 1000 */ 60 * 1000);
+  useEffect(() => {
+    if (allCryptoState.length <= 0) {
+      return;
     }
-    return result;
-  });
- */
-  console.log(provisional);
-
+    const updatedResults = provisional.map(result => {
+      const myStateItem = allCryptoState.find(item => item.id === result.id);
+      if (myStateItem) {
+        return {
+          ...result,
+          market_data: {
+            ...result.metrics.market_data,
+          },
+        };
+      }
+      return result;
+    });
+    if (provisional) {
+      dispatch(updateAllCrypto(updatedResults));
+    }
+  }, [allCryptoState]);
   return (
     <ViewContent>
       <HeaderContent>
