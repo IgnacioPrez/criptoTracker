@@ -39,7 +39,17 @@ export const cryptoSlice = createSlice({
       if (!action.payload) {
         return;
       }
-      console.log('payload:', action.payload);
+      console.log(action.payload);
+      const receivedAction = action.payload;
+      const newState = state.crypto.map((el: cryptoData) => {
+        const foundedstate = receivedAction.find(
+          (crypto: cryptoData) => crypto.id === el.id,
+        );
+        if (foundedstate) {
+          return el;
+        }
+      });
+      console.log('slice', newState);
     },
   },
   extraReducers: builder => {

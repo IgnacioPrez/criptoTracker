@@ -26,7 +26,6 @@ const Card = ({item, redirect}: Props) => {
   const {market_data, id, name, symbol} = item;
   const roundNumber = market_data.percent_change_btc_last_24_hours.toFixed(2);
   const roundNegative = Number(roundNumber) < 0;
-
   return (
     <CryptoCard onPress={redirect}>
       <Logo>
