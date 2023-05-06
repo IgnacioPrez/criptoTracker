@@ -36,20 +36,16 @@ export const cryptoSlice = createSlice({
       state.crypto = state.crypto.filter(el => el.id !== action.payload);
     },
     updateAllCrypto: (state, action) => {
-      if (!action.payload) {
-        return;
-      }
-      console.log(action.payload);
       const receivedAction = action.payload;
-      const newState = state.crypto.map((el: cryptoData) => {
+      const newState: cryptoData[] = state.crypto.map(element => {
         const foundedstate = receivedAction.find(
-          (crypto: cryptoData) => crypto.id === el.id,
+          (crypto: cryptoData) => crypto.id === element.id,
         );
         if (foundedstate) {
-          return el;
+          return element;
         }
       });
-      console.log('slice', newState);
+      newState ? (state.crypto = newState) : state.crypto;
     },
   },
   extraReducers: builder => {

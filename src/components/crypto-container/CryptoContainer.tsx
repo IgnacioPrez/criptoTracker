@@ -1,30 +1,22 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {FlatList, Pressable, RefreshControl} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import Card from '../card/Card';
 import {AddCryptoLink, ContainerList, LinkAddStyle} from './styles';
 import {RootState} from '../../app/rootReducer';
 import {useUpdate} from '../../hooks/useUpdate';
-import {updateAllCrypto} from '../../slices/criptoSlice';
 
 const CryptoContainer = ({navigation}: any) => {
-  const state = useSelector((state: RootState) => state.crypto.crypto);
-  const {newState, onRefresh, refreshing} = useUpdate();
-  const dispatch = useDispatch();
-  () => {
-    if (newState.length <= 0) {
-      return;
-    }
-    return dispatch(updateAllCrypto(newState));
-  };
-  console.log('Desde cryptocontainer:', state);
+  const stateCrypto = useSelector((state: RootState) => state.crypto.crypto);
+  const {onRefresh, refreshing} = useUpdate();
+
   return (
     <ContainerList>
       <FlatList
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
-        data={state}
+        data={stateCrypto}
         renderItem={({item}) => (
           <Card
             item={item}
