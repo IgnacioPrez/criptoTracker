@@ -55,7 +55,7 @@ export const TextVarian = styled.Text<textProps>`
     roundNegative ? theme.red : theme.green};
 `;
 
-export const CryptoCard = styled.View`
+export const CryptoCard = styled.TouchableOpacity`
   width: 90%;
   height: 90px;
   display: flex;

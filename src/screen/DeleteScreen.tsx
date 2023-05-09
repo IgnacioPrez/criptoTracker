@@ -16,7 +16,7 @@ import {
 } from '../components/delete-screen-components/style';
 import {formatter} from '../utilities/functions.utils';
 import {Loader} from '../components/loader';
-import {SEARCH_URL, IMAGE_URL} from '@env';
+import {IMAGE_URL, SEARCH_URL} from '@env';
 
 const DeleteScreen = (props: any) => {
   const {cryptoId} = props.route.params;

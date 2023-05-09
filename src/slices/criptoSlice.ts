@@ -35,6 +35,19 @@ export const cryptoSlice = createSlice({
     deleteCrypto: (state, action) => {
       state.crypto = state.crypto.filter(el => el.id !== action.payload);
     },
+    updateAllCrypto: (state, action) => {
+      const receivedAction = action.payload;
+      const newState: cryptoData[] = state.crypto.map(element => {
+        const foundedstate = receivedAction.find(
+          (crypto: cryptoData) => crypto.id === element.id,
+        );
+        if (foundedstate) {
+          return element;
+        }
+      });
+      newState ? (state.crypto = newState) : state.crypto;
+    },
+
   },
   extraReducers: builder => {
     builder
@@ -62,6 +75,5 @@ export const cryptoSlice = createSlice({
   },
 });
 
-export const {deleteCrypto} = cryptoSlice.actions;
-
+export const {deleteCrypto, updateAllCrypto} = cryptoSlice.actions;
 export default cryptoSlice.reducer;

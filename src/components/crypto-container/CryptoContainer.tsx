@@ -1,17 +1,22 @@
 import React from 'react';
-import {FlatList, Pressable} from 'react-native';
+import {FlatList, Pressable, RefreshControl} from 'react-native';
 import {useSelector} from 'react-redux';
 import Card from '../card/Card';
 import {AddCryptoLink, ContainerList, LinkAddStyle} from './styles';
 import {RootState} from '../../app/rootReducer';
+import {useUpdate} from '../../hooks/useUpdate';
 
 const CryptoContainer = ({navigation}: any) => {
-  const state = useSelector((state: RootState) => state.crypto.crypto);
+  const stateCrypto = useSelector((state: RootState) => state.crypto.crypto);
+  const {onRefresh, refreshing} = useUpdate();
 
   return (
     <ContainerList>
       <FlatList
-        data={state}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+        data={stateCrypto}
         renderItem={({item}) => (
           <Card
             item={item}
