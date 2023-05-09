@@ -1,29 +1,29 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {cryptoData} from '../model/crypto.model';
-import {baseUrl} from '../services/urls';
+import {Alert} from 'react-native';
+import {SEARCH_URL} from '@env';
 
-interface cryptoState {
+export interface cryptoState {
   crypto: cryptoData[];
   loading: boolean;
-  error: string | null;
 }
 
 const initialState: cryptoState = {
   crypto: [],
   loading: false,
-  error: null,
 };
 
-export const fetchCryptos = createAsyncThunk(
-  'cryptos/fetchCryptos',
-  async () => {
+export const fetchCrypto = createAsyncThunk(
+  'crypto/fetchCrypto',
+  async (endpoint: string, thunkAPI) => {
+    const newEndpoint = endpoint.trim().toLocaleLowerCase();
     const response = await fetch(
-      `${baseUrl}/assets?fields=id,slug,symbol,metrics/market_data&&limit=2`,
+      `${SEARCH_URL}/${newEndpoint}/metrics?fields=id,name,slug,symbol,market_data`,
     );
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
     const {data} = await response.json();
+    if (response.status !== 200) {
+      return thunkAPI.rejectWithValue('This crypto does not exist');
+    }
     return data;
   },
 );
@@ -34,17 +34,24 @@ export const cryptoSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchCryptos.pending, state => {
+      .addCase(fetchCrypto.pending, state => {
         state.loading = true;
-        state.error = null;
       })
-      .addCase(fetchCryptos.fulfilled, (state, action) => {
+      .addCase(fetchCrypto.fulfilled, (state, action) => {
         state.loading = false;
-        state.crypto = action.payload;
+        const cryptoFound = state.crypto.find(
+          crypto => crypto.id === action.payload.id,
+        );
+        if (cryptoFound) {
+          Alert.alert('Already on your list ❌');
+          return;
+        }
+        state.crypto = [...state.crypto, action.payload];
+        Alert.alert('Crypto successfully added ✅');
       })
-      .addCase(fetchCryptos.rejected, (state, action) => {
+      .addCase(fetchCrypto.rejected, state => {
         state.loading = false;
-        state.error = action.error.message ?? 'Something went wrong';
+        Alert.alert('This crypto does not exist');
       });
   },
 });

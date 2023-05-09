@@ -1,9 +1,5 @@
 import styled from 'styled-components/native';
 
-export const ViewContent = styled.View`
-  background: ${({theme}) => theme.background};
-  height: 100%;
-`;
 export const HeaderContent = styled.View`
   background-color: ${({theme}) => theme.blue};
   height: 15%;

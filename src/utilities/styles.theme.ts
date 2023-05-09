@@ -9,4 +9,5 @@ export const themes: DefaultTheme = {
   blue: '#385775',
   yellow: '#fbd24d',
   lightGrey: '#385775',
+  input: '#FAFBFC',
 };

@@ -1,15 +1,8 @@
 export interface cryptoData {
   id: string;
-  serial_id: number;
-  symbol: string;
   name: string;
   slug: string;
-  contract_addresses?: any;
-  _internal_temp_agora_id: string;
-  metrics: Metrics;
-}
-
-interface Metrics {
+  symbol: string;
   market_data: Marketdata;
 }
 

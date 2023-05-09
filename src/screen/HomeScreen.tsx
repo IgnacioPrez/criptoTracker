@@ -1,15 +1,14 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import UserIcon from 'react-native-vector-icons/EvilIcons';
-import {HeaderContent, HeaderInfo, Title, ViewContent} from '../../styles';
-import {CryptoContainer} from '../components';
-import {useDispatch} from 'react-redux';
-import {fetchCryptos} from '../slices/criptoSlice';
+import {ViewContent} from '../components/screen-style-component/style';
+import {
+  HeaderContent,
+  HeaderInfo,
+  Title,
+} from '../components/header-home/style';
+import {CryptoContainer} from '../components/crypto-container';
 
 const HomeScreen = ({navigation}: any) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchCryptos());
-  }, [dispatch]);
   return (
     <ViewContent>
       <HeaderContent>
