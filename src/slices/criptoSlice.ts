@@ -47,6 +47,7 @@ export const cryptoSlice = createSlice({
       });
       newState ? (state.crypto = newState) : state.crypto;
     },
+
   },
   extraReducers: builder => {
     builder
@@ -75,5 +76,4 @@ export const cryptoSlice = createSlice({
 });
 
 export const {deleteCrypto, updateAllCrypto} = cryptoSlice.actions;
-
 export default cryptoSlice.reducer;

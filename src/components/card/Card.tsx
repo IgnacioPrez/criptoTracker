@@ -21,6 +21,7 @@ interface Props {
   item: cryptoData;
   redirect: () => any;
 }
+
 const Card = ({item, redirect}: Props) => {
   const {market_data, id, name, symbol} = item;
   const memoizedRoundNumbers = useMemo(() => {
