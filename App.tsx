@@ -16,26 +16,24 @@ type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const App = () => {
-  return (
-    <ThemeProvider theme={themes}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <NavigationContainer>
-            <Stack.Navigator
-              screenOptions={{
-                headerShown: false,
-                statusBarColor: 'transparent',
-              }}>
-              <Stack.Screen name="HomeScreen" component={HomeScreen} />
-              <Stack.Screen name="AddScreen" component={AddScreen} />
-              <Stack.Screen name="DeleteScreen" component={DeleteScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </PersistGate>
-      </Provider>
-    </ThemeProvider>
-  );
-};
+const App = () => (
+  <ThemeProvider theme={themes}>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+              statusBarColor: 'transparent',
+            }}>
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="AddScreen" component={AddScreen} />
+            <Stack.Screen name="DeleteScreen" component={DeleteScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
+  </ThemeProvider>
+);
 
 export default App;

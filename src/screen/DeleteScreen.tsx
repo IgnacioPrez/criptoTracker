@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {ImageUrl, searchUrl} from '../services/urls';
 import {cryptoData} from '../model/crypto.model';
 import {Button} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {deleteCrypto} from '../slices/criptoSlice';
-import {Loader} from '../components';
 import {
   CardDecription,
   ContainerDeleteScreen,
@@ -17,6 +15,8 @@ import {
   TitleText,
 } from '../components/delete-screen-components/style';
 import {formatter} from '../utilities/functions.utils';
+import {Loader} from '../components/loader';
+import {IMAGE_URL, SEARCH_URL} from '@env';
 
 const DeleteScreen = (props: any) => {
   const {cryptoId} = props.route.params;
@@ -25,7 +25,7 @@ const DeleteScreen = (props: any) => {
 
   useEffect(() => {
     fetch(
-      `${searchUrl}/${cryptoId}/metrics?fields=id,name,slug,symbol,market_data`,
+      `${SEARCH_URL}/${cryptoId}/metrics?fields=id,name,slug,symbol,market_data`,
     )
       .then(response => response.json())
       .then(({data}) => setCrypto(data))
@@ -51,7 +51,7 @@ const DeleteScreen = (props: any) => {
             <ImageAndInfo>
               <ImageDelete
                 source={{
-                  uri: `${ImageUrl}${crypto.id}/64.png?v=`,
+                  uri: `${IMAGE_URL}${crypto.id}/64.png?v=`,
                 }}
               />
               <FirstInfoDelete>

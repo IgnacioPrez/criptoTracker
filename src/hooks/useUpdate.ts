@@ -2,8 +2,8 @@ import {useEffect, useState} from 'react';
 import {UpdateState} from '../model/crypto.model';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../app/rootReducer';
-import {baseUrl} from '../services/urls';
 import {updateAllCrypto} from '../slices/criptoSlice';
+import {BASE_URL} from '@env';
 
 export function useUpdate() {
   const [provisionalState, setProvisionalState] = useState<UpdateState[]>([]);
@@ -12,7 +12,7 @@ export function useUpdate() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(baseUrl)
+    fetch(BASE_URL)
       .then(response => response.json())
       .then(({data}) => setProvisionalState(data))
       .catch(error => console.error(error));
