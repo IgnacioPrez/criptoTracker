@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {cryptoData} from '../model/crypto.model';
-import {searchUrl} from '../services/urls';
 import {Alert} from 'react-native';
+import {SEARCH_URL} from '@env';
 
 export interface cryptoState {
   crypto: cryptoData[];
@@ -18,7 +18,7 @@ export const fetchCrypto = createAsyncThunk(
   async (endpoint: string, thunkAPI) => {
     const newEndpoint = endpoint.trim().toLocaleLowerCase();
     const response = await fetch(
-      `${searchUrl}/${newEndpoint}/metrics?fields=id,name,slug,symbol,market_data`,
+      `${SEARCH_URL}/${newEndpoint}/metrics?fields=id,name,slug,symbol,market_data`,
     );
     const {data} = await response.json();
     if (response.status !== 200) {
@@ -44,7 +44,7 @@ export const cryptoSlice = createSlice({
       .addCase(fetchCrypto.fulfilled, (state, action) => {
         state.loading = true;
         const cryptoFound = state.crypto.find(
-          el => el.id === action.payload.id,
+          crypto => crypto.id === action.payload.id,
         );
         if (cryptoFound) {
           Alert.alert('Already on your list ❌');

@@ -1,13 +1,13 @@
 import React from 'react';
-import {HeaderBack, Search} from '../components';
 import {ContainerAddScreen} from '../components/screen-style-component/style';
-const AddScreen = ({navigation}: any) => {
-  return (
-    <ContainerAddScreen>
-      <HeaderBack navigation={navigation} />
-      <Search />
-    </ContainerAddScreen>
-  );
-};
+import {HeaderBack} from '../components/header-back';
+import {Search} from '../components/search-crypto';
+
+const AddScreen = ({navigation}: any) => (
+  <ContainerAddScreen>
+    <HeaderBack navigation={navigation} />
+    <Search />
+  </ContainerAddScreen>
+);
 
 export default AddScreen;

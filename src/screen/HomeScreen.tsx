@@ -1,12 +1,12 @@
 import React from 'react';
 import UserIcon from 'react-native-vector-icons/EvilIcons';
-import {CryptoContainer} from '../components';
 import {ViewContent} from '../components/screen-style-component/style';
 import {
   HeaderContent,
   HeaderInfo,
   Title,
 } from '../components/header-home/style';
+import {CryptoContainer} from '../components/crypto-container';
 
 const HomeScreen = ({navigation}: any) => {
   return (
