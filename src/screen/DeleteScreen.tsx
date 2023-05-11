@@ -17,12 +17,13 @@ import {
 import {formatter} from '../utilities/functions.utils';
 import {Loader} from '../components/loader';
 import {IMAGE_URL, SEARCH_URL} from '@env';
+import {useTheme} from 'styled-components/native';
 
 const DeleteScreen = (props: any) => {
   const {cryptoId} = props.route.params;
   const [crypto, setCrypto] = useState<cryptoData>();
   const Dispatch = useDispatch();
-
+  const theme = useTheme();
   useEffect(() => {
     fetch(
       `${SEARCH_URL}/${cryptoId}/metrics?fields=id,name,slug,symbol,market_data`,
@@ -65,12 +66,12 @@ const DeleteScreen = (props: any) => {
             <DeleteContainerBtn>
               <Button
                 title="Delete"
-                color="#3aa856"
+                color={theme.green}
                 onPress={() => actionDelete(crypto.id)}
               />
               <Button
                 title="Cancel"
-                color="red"
+                color={theme.red}
                 onPress={() => props.navigation.navigate('HomeScreen')}
               />
             </DeleteContainerBtn>
