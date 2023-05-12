@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 interface textProps {
   roundNegative: boolean;
 }
+
 export const CryptoImage = styled.Image`
   width: 45px;
   height: 45px;
@@ -54,13 +55,13 @@ export const TextVarian = styled.Text<textProps>`
     roundNegative ? theme.red : theme.green};
 `;
 
-export const CryptoCard = styled.View`
+export const CryptoCard = styled.TouchableOpacity`
   width: 90%;
   height: 90px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-color: lightgrey;
+  border-color: ${({theme}) => theme.lightGrey};
   border-bottom-width: 1px;
   border-style: solid;
   align-self: center;

@@ -15,14 +15,15 @@ import {
   TextVarian,
 } from './styles';
 import {IMAGE_URL} from '@env';
+import {formatter} from '../../utilities/functions.utils';
 
-const Card = ({id, name, symbol, market_data}: cryptoData) => {
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-  });
+interface Props {
+  item: cryptoData;
+  redirect: () => any;
+}
 
+const Card = ({item, redirect}: Props) => {
+  const {market_data, id, name, symbol} = item;
   const memoizedRoundNumbers = useMemo(() => {
     const roundNumber = market_data.percent_change_btc_last_24_hours.toFixed(2);
     const roundNegative = Number(roundNumber) < 0;
@@ -30,7 +31,7 @@ const Card = ({id, name, symbol, market_data}: cryptoData) => {
   }, [market_data]);
 
   return (
-    <CryptoCard>
+    <CryptoCard onPress={redirect}>
       <Logo>
         <CryptoImage
           source={{

@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {fetchCrypto} from '../slices/criptoSlice';
 import {Alert} from 'react-native';
 
-export function useSearch() {
+export const useSearch = () => {
   const [focus, setFocus] = useState(false);
   const [search, setSearch] = useState('');
   const dispatch = useDispatch();
@@ -29,4 +29,4 @@ export function useSearch() {
     focus,
     setFocus,
   };
-}
+};

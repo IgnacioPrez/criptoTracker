@@ -7,11 +7,15 @@ import {
   SearchContainer,
 } from './style';
 import {themes} from '../../utilities/styles.theme';
+import {useSelector} from 'react-redux';
+import {ActivityIndicator} from 'react-native';
+import {RootState} from '../../app/rootReducer';
 import {useSearch} from '../../hooks/useSearch';
 
 const Search = () => {
   const {handleButtonPress, handleTextChange, focus, setFocus, search} =
     useSearch();
+  const stateLoading = useSelector((state: RootState) => state.crypto.loading);
 
   return (
     <SearchContainer>
@@ -24,8 +28,12 @@ const Search = () => {
         value={search}
         onChangeText={handleTextChange}
       />
-      <SearchBtn onPress={handleButtonPress}>
-        <BtnSearchText focus={focus}>Add</BtnSearchText>
+      <SearchBtn onPress={handleButtonPress} isLoading={stateLoading}>
+        {stateLoading ? (
+          <ActivityIndicator size="small" />
+        ) : (
+          <BtnSearchText focus={focus}>Add</BtnSearchText>
+        )}
       </SearchBtn>
     </SearchContainer>
   );
