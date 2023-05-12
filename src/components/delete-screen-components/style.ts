@@ -41,7 +41,7 @@ export const FirstInfoDelete = styled.View`
 `;
 
 export const TextDescription = styled.Text`
-  color: #000;
+  color: ${({theme}) => theme.text};
   font-weight: bold;
 `;
 export const DeleteContainerBtn = styled.View`
@@ -52,7 +52,7 @@ export const DeleteContainerBtn = styled.View`
 `;
 
 export const TitleText = styled.Text`
-  color: #fff;
+  color: ${({theme}) => theme.background};
   font-size: 18px;
   text-align: center;
   width: 90%;

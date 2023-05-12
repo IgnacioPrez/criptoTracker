@@ -61,7 +61,7 @@ export const CryptoCard = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-color: lightgrey;
+  border-color: ${({theme}) => theme.lightGrey};
   border-bottom-width: 1px;
   border-style: solid;
   align-self: center;

@@ -7,10 +7,10 @@ import {
   SearchContainer,
 } from './style';
 import {themes} from '../../utilities/styles.theme';
-import {useSearch} from '../../hooks/useSearch';
 import {useSelector} from 'react-redux';
 import {ActivityIndicator} from 'react-native';
 import {RootState} from '../../app/rootReducer';
+import {useSearch} from '../../hooks/useSearch';
 
 const Search = () => {
   const {handleButtonPress, handleTextChange, focus, setFocus, search} =

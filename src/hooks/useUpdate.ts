@@ -5,7 +5,7 @@ import {RootState} from '../app/rootReducer';
 import {updateAllCrypto} from '../slices/criptoSlice';
 import {BASE_URL} from '@env';
 
-export function useUpdate() {
+export const useUpdate = () => {
   const [provisionalState, setProvisionalState] = useState<UpdateState[]>([]);
   const allCryptoState = useSelector((state: RootState) => state.crypto.crypto);
   const [refreshing, setRefreshing] = useState(false);
@@ -44,4 +44,4 @@ export function useUpdate() {
   };
 
   return {refreshing, onRefresh};
-}
+};
